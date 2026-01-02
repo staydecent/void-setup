@@ -11,6 +11,9 @@ xbps-install -Syu
 # base packages
 xbps-install -Sy apparmor console-setup curl fish-shell fzf gawk git kakoune lowdown neovim redshift rsync sed stow tzdata ufetch wget xclip
 
+# set console font
+sed -i 's/^#*\s*FONT=.*/FONT="Lat2-Terminus16"/' /etc/rc.conf
+
 # add app armor to kernel commandline
 # see: https://docs.voidlinux.org/config/security/apparmor.html
 sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 apparmor=1 security=apparmor"/' /etc/default/grub
