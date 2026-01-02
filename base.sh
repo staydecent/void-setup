@@ -25,6 +25,6 @@ update-grub
 # git
 git config --global push.default simple
 
-echo "Please set the following git configs, then execute `./dotfiles.sh`: \n"
+echo "Please set the following git configs, then execute \`./dotfiles.sh\`: \n"
 echo "git config --global user.name \"XX\" \ngit config --global user.email \"YY\"\n"
 echo "ssh-keygen -t rsa -b 4096 -C \"YY\""
