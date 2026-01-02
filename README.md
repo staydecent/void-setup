@@ -29,7 +29,7 @@ git config --global push.default simple
 Download this repo:
 
 ```bash
-git checkout git@github.com:staydecent/void-setup.git ~/
+git clone git@github.com:staydecent/void-setup.git ~/
 ```
 
 Now, simply run the setup script of choice:
