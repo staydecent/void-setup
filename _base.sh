@@ -21,7 +21,6 @@ xbps-install -Syu
 echo "[*] Installing preferred packages..."
 xbps-install -Sy \
     apparmor \
-    console-setup \
     curl \
     fish-shell \
     fzf \
@@ -36,8 +35,7 @@ xbps-install -Sy \
     stow \
     tzdata \
     ufetch \
-    wget \
-    xclip
+    wget
 
 echo "[*] Setting console font to \"Lat2-Terminus16\"..."
 sed -i 's/^#*\s*FONT=.*/FONT="Lat2-Terminus16"/' /etc/rc.conf
@@ -49,3 +47,7 @@ sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 app
 sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="  /GRUB_CMDLINE_LINUX_DEFAULT=" /' /etc/default/grub
 
 update-grub
+
+echo "[*] Checking out .dotfiles repo and stowing..."
+git clone git@github.com:staydecent/.dotfiles.git ~/
+stow -Rv ~/.dotfiles
