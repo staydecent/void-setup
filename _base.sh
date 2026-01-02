@@ -10,6 +10,8 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+# The system was likely just updated, but keeping these in for redundancy
+
 echo "[*] Updating xbps package manager..."
 xbps-install -Syu xbps
 
@@ -17,7 +19,25 @@ echo "[*] Updating system..."
 xbps-install -Syu
 
 echo "[*] Installing preferred packages..."
-xbps-install -Sy apparmor console-setup curl fish-shell fzf gawk git kakoune lowdown neovim redshift rsync sed stow tzdata ufetch wget xclip
+xbps-install -Sy \
+    apparmor \
+    console-setup \
+    curl \
+    fish-shell \
+    fzf \
+    gawk \
+    git \
+    kakoune \
+    lowdown \
+    neovim \
+    redshift \
+    rsync \
+    sed \
+    stow \
+    tzdata \
+    ufetch \
+    wget \
+    xclip
 
 echo "[*] Setting console font to \"Lat2-Terminus16\"..."
 sed -i 's/^#*\s*FONT=.*/FONT="Lat2-Terminus16"/' /etc/rc.conf
@@ -29,10 +49,3 @@ sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 app
 sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="  /GRUB_CMDLINE_LINUX_DEFAULT=" /' /etc/default/grub
 
 update-grub
-
-# git
-git config --global push.default simple
-
-echo "Please set the following git configs, then execute \`./dotfiles.sh\`: \n"
-echo "git config --global user.name \"XX\" \ngit config --global user.email \"YY\"\n"
-echo "ssh-keygen -t rsa -b 4096 -C \"YY\""
