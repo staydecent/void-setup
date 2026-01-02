@@ -2,19 +2,27 @@
 set -e
 set -u
 
-# update xbps itself
+echo "=== Setup Script for Void Linux ==="
+echo ""
+
+if [ "$EUID" -ne 0 ]; then 
+    echo "This script must be run as root"
+    exit 1
+fi
+
+echo "[*] Updating xbps package manager..."
 xbps-install -Syu xbps
 
-# update system 
+echo "[*] Updating system..."
 xbps-install -Syu
 
-# base packages
+echo "[*] Installing preferred packages..."
 xbps-install -Sy apparmor console-setup curl fish-shell fzf gawk git kakoune lowdown neovim redshift rsync sed stow tzdata ufetch wget xclip
 
-# set console font
+echo "[*] Setting console font to \"Lat2-Terminus16\"..."
 sed -i 's/^#*\s*FONT=.*/FONT="Lat2-Terminus16"/' /etc/rc.conf
 
-# add app armor to kernel commandline
+echo "[*] Adding app armor to linux cmdline via grub..."
 # see: https://docs.voidlinux.org/config/security/apparmor.html
 sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 apparmor=1 security=apparmor"/' /etc/default/grub
 # remove extra whitespace, if any
