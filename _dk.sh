@@ -14,4 +14,8 @@ echo "[*] Installing packages for dk..."
 xbps-install -Syu \
 	xorg-minimal \
 	xf86-video-nouveau `# this should move to device specific script` \
+	sxhkd \
 	dk \
+	polybar \
+	rofi \
+	qterminal
