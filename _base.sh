@@ -2,7 +2,7 @@
 set -e
 set -u
 
-echo "=== Setup Script for Void Linux ==="
+echo "[Base packages and Setup]"
 echo ""
 
 if [ "$EUID" -ne 0 ]; then 
@@ -49,5 +49,5 @@ sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="  /GRUB_CMDLINE_LINUX_DEFAULT=" /' /etc/de
 update-grub
 
 echo "[*] Checking out .dotfiles repo and stowing..."
-git clone git@github.com:staydecent/.dotfiles.git ~/
+cd ~/ && git clone git@github.com:staydecent/.dotfiles.git
 stow -Rv ~/.dotfiles
