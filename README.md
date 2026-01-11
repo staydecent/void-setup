@@ -2,7 +2,7 @@
 
 > ⚠️ Currently a WIP! Not-tested! Use at own risk!
 
-Since ditching MacOS and Windows a few years ago, I've just run Kubuntu (Ubuntu with KDE) and Linux Mint as simple, near-zero configuration installations that _Just Work ™️_. For fun, I decided to dig out my 15+ year old Lenovo Thinkpad T410 and get a lightweight linux distro running on it for a sort-of distraction free writing computer — it still has one of the best laptop keyboards.
+Since [ditching MacOS and Windows][(https://staydecent.ca/blog/moving-to-linux-after-10-years-of-mac/) some years ago, I've just run Kubuntu (Ubuntu with KDE) and Linux Mint as simple, near-zero configuration installations that _Just Works™_. For fun, I decided to dig out my 15+ year old Lenovo Thinkpad T410 and get a lightweight linux distro running on it for a sort-of distraction free writing computer — it still has one of the best laptop keyboards.
 
 I had heard about Void Linux at some point and have decided to give it a go. However, I didn't want to spend all this time getting it setup and then have no idea how I got there. So, instead, as I'm testing out different packages and getting my requirements settled, I'm building simple scripts to automate the setup.
 
@@ -17,7 +17,7 @@ xbps-install -Syu
 xbps-install -Syu xbps git
 
 ```
-
+Since we have to install one of `curl`, `wget` or `git`, might as well start with `git`.
 Initialize your git config:
 
 ```bash
@@ -52,3 +52,4 @@ Again, this is WIP and I have not completed the initial scripts for my ThinkPad 
 **Helpful Links**
 
 - [xbps docs](https://docs.voidlinux.org/xbps/index.html)
+- [my .dotfiles](https://github.com/staydecent/.dotfiles/) (also WIP as I move to properly managing them with git+stow)
